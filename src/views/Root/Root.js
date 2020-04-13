@@ -1,27 +1,20 @@
 import React from 'react';
-import { ThemeProvider } from 'styled-components';
-import Button from 'components/atoms/Button/Button';
-import Heading from 'components/atoms/Heading/Heading';
-import Input from 'components/atoms/Input/Input';
-import Card from 'components/molecules/Card/Card';
-import GlobalStyle from 'theme/GlobalStyle';
-import { theme } from 'theme/mainTheme';
-import Paragraph from 'components/atoms/Paragraph/Paragraph';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import MainTemplate from 'templates/MainTemplate';
+import Products from 'views/Products';
+import Edit from 'views/Edit';
+import Settings from 'views/Settings';
 
 const Root = () => (
-  <div>
-    <GlobalStyle />
-    <ThemeProvider theme={theme}>
-      <>
-      <Paragraph>Welcome</Paragraph>
-      <Heading>Food App</Heading>
-      <Input/>
-      <Card></Card>
-        <Button>Add</Button>
-        <Button secondary>Delete</Button>
-      </>
-    </ThemeProvider>
-  </div>
+  <MainTemplate>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={Products} />
+        <Route path="/edit" component={Edit} />
+        <Route path="/settings" component={Settings} />
+      </Switch>
+    </BrowserRouter>
+  </MainTemplate>
 );
 
 export default Root;
