@@ -6,14 +6,13 @@ import Heading from 'components/atoms/Heading/Heading';
 import Button from 'components/atoms/Button/Button';
 
 const StyledWrapper = styled.div`
-  min-height: 390px;
-  box-shadow: 0 10px 30px -20px hsla(0, 0%, 0%, 0.2);
-  border-radius: 15px;
+  min-height: 380px;
+  box-shadow: 0 10px 30px -10px hsla(0, 0%, 0%, 0.1);
+  border-radius: 10px;
   overflow: hidden;
   position: relative;
   display: grid;
-  grid-template-rows: 0.3fr 1fr;
-  background-color:${({ theme }) => theme.primary};
+  grid-template-rows: 0.25fr 1fr;
 `;
 
 const InnerWrapper = styled.div`
@@ -48,17 +47,17 @@ const Card = ({ cardType }) => (
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit nemo ducimus fuga
         repellendus illum
       </Paragraph>
-      <Button secondary>SHOW</Button>
+      <Button secondary>REMOVE</Button>
     </InnerWrapper>
   </StyledWrapper>
 );
 
 Card.propTypes = {
-  cardType: PropTypes.oneOf(['note', 'twitter', 'article']),
+  cardType: PropTypes.oneOf(['product', 'edit', 'settings']),
 };
 
 Card.defaultProps = {
-  cardType: 'note',
+  cardType: 'product',
 };
 
 export default Card;

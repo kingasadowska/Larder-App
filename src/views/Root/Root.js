@@ -6,15 +6,15 @@ import Edit from 'views/Edit';
 import Settings from 'views/Settings';
 
 const Root = () => (
-  <MainTemplate>
-    <BrowserRouter>
+  <BrowserRouter>
+    <MainTemplate>
       <Switch>
         <Route exact path="/" component={Products} />
         <Route path="/edit" component={Edit} />
         <Route path="/settings" component={Settings} />
       </Switch>
-    </BrowserRouter>
-  </MainTemplate>
+      </MainTemplate>
+  </BrowserRouter>
 );
 
 export default Root;
