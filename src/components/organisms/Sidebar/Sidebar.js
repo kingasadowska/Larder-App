@@ -5,8 +5,8 @@ import styled from 'styled-components';
 import ButtonIcon from 'components/atoms/ButtonIcon/ButtonIcon';
 import logoutIcon from 'assets/icons/logout.svg';
 import productIcon from 'assets/icons/products.svg';
-import editIcon from 'assets/icons/edit.svg';
-import settingsIcon from 'assets/icons/settings.svg';
+import fruitIcon from 'assets/icons/fruit.svg';
+import bakeryIcon from 'assets/icons/bakery.svg';
 import logoIcon from 'assets/logo.svg';
 
 const StyledWrapper = styled.nav`
@@ -53,10 +53,10 @@ const Sidebar = ({ pageType }) => (
         <ButtonIcon exact as={NavLink} to="/" icon={productIcon} activeclass="active" />
       </li>
       <li>
-        <ButtonIcon as={NavLink} to="/settings" icon={settingsIcon} activeclass="active" />
+        <ButtonIcon as={NavLink} to="/bakery" icon={bakeryIcon} activeclass="active" />
       </li>
       <li>
-        <ButtonIcon as={NavLink} to="/edit" icon={editIcon} activeclass="active" />
+        <ButtonIcon as={NavLink} to="/fruits" icon={fruitIcon} activeclass="active" />
       </li>
     </StyledLinksList>
     <StyledLogoutButton as={NavLink} to="/login" icon={logoutIcon} />

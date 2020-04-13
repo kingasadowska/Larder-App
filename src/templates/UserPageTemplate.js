@@ -36,9 +36,9 @@ const UserPageTemplate = ({ children, pageType }) => (
       <StyledPageHeader>
         <Input search placeholder="Search" />
         <StyledHeading big as="h1">
-          Products
+        {pageType}
         </StyledHeading>
-        <StyledParagraph>6 products</StyledParagraph>
+        <StyledParagraph>6 {pageType}</StyledParagraph>
       </StyledPageHeader>
       <StyledGrid>{children}</StyledGrid>
     </StyledWrapper>
@@ -47,11 +47,11 @@ const UserPageTemplate = ({ children, pageType }) => (
 
 UserPageTemplate.propTypes = {
   children: PropTypes.element.isRequired,
-  pageType: PropTypes.oneOf(['product', 'add', 'settings']),
+  pageType: PropTypes.oneOf(['diary', 'add', 'bakery']),
 };
 
 UserPageTemplate.defaultProps = {
-  pageType: 'product',
+  pageType: 'diary',
 };
 
 export default UserPageTemplate;

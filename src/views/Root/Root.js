@@ -1,17 +1,17 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import MainTemplate from 'templates/MainTemplate';
-import Products from 'views/Products';
-import Edit from 'views/Edit';
-import Settings from 'views/Settings';
+import Diary from 'views/Diary';
+import Fruits from 'views/Fruits';
+import Bakery from 'views/Bakery';
 
 const Root = () => (
   <BrowserRouter>
     <MainTemplate>
       <Switch>
-        <Route exact path="/" component={Products} />
-        <Route path="/edit" component={Edit} />
-        <Route path="/settings" component={Settings} />
+        <Route exact path="/" component={Diary} />
+        <Route path="/fruits" component={Fruits} />
+        <Route path="/bakery" component={Bakery} />
       </Switch>
       </MainTemplate>
   </BrowserRouter>

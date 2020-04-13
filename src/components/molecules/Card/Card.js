@@ -37,27 +37,28 @@ const StyledHeading = styled(Heading)`
   margin: 5px 0 0;
 `;
 
-const Card = ({ cardType }) => (
+const Card = ({ cardType, title, created, content }) => (
   <StyledWrapper>
     <InnerWrapper activeColor={cardType}>
-      <StyledHeading>Products</StyledHeading>
+    <StyledHeading>{title}</StyledHeading>
     </InnerWrapper>
     <InnerWrapper flex>
-      <Paragraph>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit nemo ducimus fuga
-        repellendus illum
-      </Paragraph>
+    <Paragraph>{content}</Paragraph>
       <Button secondary>REMOVE</Button>
     </InnerWrapper>
   </StyledWrapper>
 );
 
 Card.propTypes = {
-  cardType: PropTypes.oneOf(['product', 'edit', 'settings']),
+  cardType: PropTypes.oneOf(['diary', 'fruits', 'bakery']),
+  title: PropTypes.string.isRequired,
+  created: PropTypes.string.isRequired,
+  articleUrl: PropTypes.string,
+  content: PropTypes.string.isRequired,
 };
 
 Card.defaultProps = {
-  cardType: 'product',
+  cardType: 'diary',
 };
 
 export default Card;
