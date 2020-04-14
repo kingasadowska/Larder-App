@@ -1,5 +1,5 @@
 import React from 'react';
-import UserPageTemplate from 'templates/UserPageTemplate';
+import GridTemplate from 'templates/GridTemplate';
 import Card from 'components/molecules/Card/Card';
 
 const bakery = [
@@ -30,7 +30,7 @@ const bakery = [
 ];
  
 const Bakerys = () => (
-    <UserPageTemplate pageType="bakery">
+  <GridTemplate pageType="bakery">
       {bakery.map(item => (
       <Card
         cardType="bakery"
@@ -40,7 +40,7 @@ const Bakerys = () => (
         key={item.title}
       />
     ))}
-    </UserPageTemplate>
+    </GridTemplate>
   );
 
 export default Bakerys;

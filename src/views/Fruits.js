@@ -1,5 +1,5 @@
 import React from 'react';
-import UserPageTemplate from 'templates/UserPageTemplate';
+import GridTemplate from 'templates/GridTemplate';
 import Card from 'components/molecules/Card/Card';
 
 const fruits = [
@@ -28,7 +28,7 @@ const fruits = [
 ];
 
 const Fruits = () =>  (
-    <UserPageTemplate pageType="fruits">
+    <GridTemplate pageType="fruits">
        {fruits.map(item => (
       <Card
         cardType="fruits"
@@ -38,6 +38,6 @@ const Fruits = () =>  (
         key={item.title}
       />
     ))}
-    </UserPageTemplate>
+    </GridTemplate>
   );
 export default Fruits;

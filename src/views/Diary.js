@@ -1,5 +1,5 @@
 import React from 'react';
-import UserPageTemplate from 'templates/UserPageTemplate';
+import GridTemplate from 'templates/GridTemplate';
 import Card from 'components/molecules/Card/Card';
 
 const diarys = [
@@ -29,7 +29,7 @@ const diarys = [
   },
 ];
 const Diary = () =>(
-    <UserPageTemplate pageType="diary">
+  <GridTemplate pageType="diary">
    {diarys.map(item => (
       <Card
         cardType="diary"
@@ -39,6 +39,6 @@ const Diary = () =>(
         key={item.title}
       />
     ))}
-    </UserPageTemplate>
+    </GridTemplate>
   );
 export default Diary;
