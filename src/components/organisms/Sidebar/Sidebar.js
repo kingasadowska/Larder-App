@@ -50,10 +50,10 @@ const Sidebar = ({ pageType }) => (
     <StyledLogoLink to="/" />
     <StyledLinksList>
       <li>
-        <ButtonIcon exact as={NavLink} to="/diary" icon={productIcon} activeclass="active" />
+        <ButtonIcon as={NavLink} to="/diaries" icon={productIcon} activeclass="active" />
       </li>
       <li>
-        <ButtonIcon as={NavLink} to="/bakery" icon={bakeryIcon} activeclass="active" />
+        <ButtonIcon as={NavLink} to="/bakeries" icon={bakeryIcon} activeclass="active" />
       </li>
       <li>
         <ButtonIcon as={NavLink} to="/fruits" icon={fruitIcon} activeclass="active" />

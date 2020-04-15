@@ -4,24 +4,28 @@ import Card from 'components/molecules/Card/Card';
 
 const bakery = [
   {
+    id: 1,
     title: 'Bakery',
     content:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
     created: '1 day'
   },
   {
+    id: 2,
     title: 'Bakery',
     content:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
     created: '1 day'
   },
   {
+    id: 3,
     title: 'Bakery',
     content:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
     created: '5 days'
   },
   {
+    id: 4,
     title: 'Bakery',
     content:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
@@ -30,14 +34,15 @@ const bakery = [
 ];
  
 const Bakerys = () => (
-  <GridTemplate pageType="bakery">
-      {bakery.map(item => (
+  <GridTemplate pageType="bakeries">
+      {bakery.map(({ id, title, content, created }) => (
       <Card
-        cardType="bakery"
-        title={item.title}
-        content={item.content}
-        created={item.created}
-        key={item.title}
+      id = {id}
+        cardType="bakeries"
+        title={title}
+        content={content}
+        created={created}
+        key={title}
       />
     ))}
     </GridTemplate>

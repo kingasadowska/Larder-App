@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
+import { Redirect } from 'react-router-dom';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Heading from 'components/atoms/Heading/Heading';
 import Button from 'components/atoms/Button/Button';
@@ -37,20 +38,37 @@ const StyledHeading = styled(Heading)`
   margin: 5px 0 0;
 `;
 
-const Card = ({ cardType, title, created, content }) => (
-  <StyledWrapper>
-    <InnerWrapper activeColor={cardType}>
-    <StyledHeading>{title}</StyledHeading>
-    </InnerWrapper>
-    <InnerWrapper flex>
-    <Paragraph>{content}</Paragraph>
-      <Button secondary>REMOVE</Button>
-    </InnerWrapper>
-  </StyledWrapper>
-);
+class Card extends Component {
+  state = {
+    redirect: false,
+  };
+ 
+  handleCardClick = () => this.setState({ redirect: true });
+
+  render() {
+    const { id, cardType, title, content } = this.props;
+    const { redirect } = this.state;
+ 
+    if (redirect) {
+      return <Redirect to={`${cardType}/${id}`} />;
+    }
+    return (
+      <StyledWrapper onClick={this.handleCardClick}>
+        <InnerWrapper activeColor={cardType}>
+          <StyledHeading>{title}</StyledHeading>
+        </InnerWrapper>
+        <InnerWrapper flex>
+          <Paragraph>{content}</Paragraph>
+          <Button secondary>SEE MORE</Button>
+        </InnerWrapper>
+      </StyledWrapper>
+    );
+  }
+}
 
 Card.propTypes = {
-  cardType: PropTypes.oneOf(['diary', 'fruits', 'bakery']),
+  id: PropTypes.string.isRequired,
+  cardType: PropTypes.oneOf(['diaries', 'fruits', 'bakeries']),
   title: PropTypes.string.isRequired,
   created: PropTypes.string.isRequired,
   articleUrl: PropTypes.string,
@@ -58,7 +76,7 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
-  cardType: 'diary',
+  cardType: 'diaries',
 };
 
 export default Card;

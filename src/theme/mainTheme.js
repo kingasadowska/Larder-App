@@ -1,6 +1,6 @@
 export const theme = {
-  diary: '#aa95ff',
-  bakery: '#c3cee5',
+  diaries: '#aa95ff',
+  bakeries: '#c3cee5',
   fruits: '#f7ac62',
   grey100: '#F5F5F5',
   grey200: '#B3B3B3',

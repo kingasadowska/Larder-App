@@ -2,26 +2,30 @@ import React from 'react';
 import GridTemplate from 'templates/GridTemplate';
 import Card from 'components/molecules/Card/Card';
 
-const diarys = [
+const diaries = [
   {
+    id: 1,
     title: 'Diary',
     content:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
     created: '1 day',
   },
   {
+    id: 2,
     title: 'Diary',
     content:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
     created: '2 day',
   },
   {
+    id: 3,
     title: 'Diary',
     content:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
     created: '3 days',
   },
   {
+    id: 4,
     title: 'Diary',
     content:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
@@ -29,14 +33,15 @@ const diarys = [
   },
 ];
 const Diary = () =>(
-  <GridTemplate pageType="diary">
-   {diarys.map(item => (
+  <GridTemplate pageType="diaries">
+   {diaries.map(({ id, title, content, created }) => (
       <Card
-        cardType="diary"
-        title={item.title}
-        content={item.content}
-        created={item.created}
-        key={item.title}
+        id={id}
+        cardType="diaries"
+        title={title}
+        content={content}
+        created={created}
+        key={title}
       />
     ))}
     </GridTemplate>

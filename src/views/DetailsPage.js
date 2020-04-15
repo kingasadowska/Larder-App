@@ -1,10 +1,44 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import DetailsTemplate from 'templates/DetailsTemplate';
+import { routes } from 'routes';
 
-const DetailsPage = () => (
-  <>
-    <DetailsTemplate />
-  </>
-);
+class DetailsPage extends Component {
+  state = {
+    pageType: 'notes',
+  };
 
+  componentDidMount() {
+    const { match } = this.props;
+
+    switch (match.path) {
+      case routes.twitter:
+        this.setState({ pageType: 'diaries' });
+        break;
+      case routes.note:
+        this.setState({ pageType: 'bakeries' });
+        break;
+      case routes.article:
+        this.setState({ pageType: 'fruits' });
+        break;
+      default:
+        console.log('Something went wrong with matching paths');
+    }
+  }
+
+  render() {
+    const { pageType } = this.state;
+
+    return (
+      <DetailsTemplate pageType={pageType}>
+        <p>{pageType}</p>
+      </DetailsTemplate>
+    );
+  }
+}
+
+DetailsPage.propTypes = {
+  match: PropTypes.string.isRequired,
+};
+ 
 export default DetailsPage;
