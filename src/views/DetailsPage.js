@@ -5,20 +5,20 @@ import { routes } from 'routes';
 
 class DetailsPage extends Component {
   state = {
-    pageType: 'notes',
+    pageType: 'diaries',
   };
 
   componentDidMount() {
     const { match } = this.props;
 
     switch (match.path) {
-      case routes.twitter:
+      case routes.diary:
         this.setState({ pageType: 'diaries' });
         break;
-      case routes.note:
+      case routes.bakery:
         this.setState({ pageType: 'bakeries' });
         break;
-      case routes.article:
+      case routes.fruit:
         this.setState({ pageType: 'fruits' });
         break;
       default:
@@ -38,7 +38,7 @@ class DetailsPage extends Component {
 }
 
 DetailsPage.propTypes = {
-  match: PropTypes.string.isRequired,
+  match: PropTypes.object.isRequired,
 };
  
 export default DetailsPage;

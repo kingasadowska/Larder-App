@@ -16,7 +16,7 @@ const StyledWrapper = styled.nav`
   padding: 25px 0;
   width: 150px;
   height: 100vh;
-  background-color: ${({ activeColor, theme }) => (activeColor ? theme[activeColor] : theme.note)};
+  background-color: ${({ activeColor, theme }) => (activeColor ? theme[activeColor] : theme.diary)};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -25,8 +25,8 @@ const StyledWrapper = styled.nav`
 
 const StyledLogoLink = styled(NavLink)`
   display: block;
-  width: 67px;
-  height: 67px;
+  width: 75px;
+  height: 75px;
   background-image: url(${logoIcon});
   background-repeat: no-repeat;
   background-position: 50% 50%;

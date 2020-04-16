@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import GridTemplate from 'templates/GridTemplate';
 import Card from 'components/molecules/Card/Card';
 
-const Fruits = ({ fruits }) =>  (
-    <GridTemplate pageType="fruits">
-      {fruits.map(({ id, title, content, created }) => (
+const Diaries = ({ diaries }) =>  (
+  <GridTemplate pageType="diaries">
+   {diaries.map(({ id, title, content, created }) => (
       <Card
         id={id}
-        cardType="fruits"
+        cardType="diaries"
         title={title}
         content={content}
         created={created}
@@ -18,8 +18,7 @@ const Fruits = ({ fruits }) =>  (
     ))}
     </GridTemplate>
   );
-
-  Fruits.propTypes = {
+  Diaries.propTypes = {
     fruits: PropTypes.arrayOf(
       PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -31,13 +30,13 @@ const Fruits = ({ fruits }) =>  (
     ),
   };
   
-  Fruits.defaultProps = {
-    fruits: [],
+  Diaries.defaultProps = {
+    diaries: [],
   };
   
   const mapStateToProps = state => {
-    const { fruits } = state;
-    return { fruits };
+    const { diaries } = state;
+    return { diaries };
   };
   
-  export default connect(mapStateToProps)(Fruits);
+  export default connect(mapStateToProps)(Diaries);
