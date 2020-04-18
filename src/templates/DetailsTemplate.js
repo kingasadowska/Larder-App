@@ -6,6 +6,7 @@ import UserPageTemplate from 'templates/UserPageTemplate';
 import Heading from 'components/atoms/Heading/Heading';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Button from 'components/atoms/Button/Button';
+import withContext from 'hoc/withContext';
 
 const StyledWrapper = styled.div`
   padding: 25px 150px 25px 70px;
@@ -34,8 +35,8 @@ const StyledParagraph = styled(Paragraph)`
   font-weight: ${({ theme }) => theme.bold};
 `;
 
-const DetailsTemplate = ({ pageType, title, created, content }) => (
-  <UserPageTemplate pageType={pageType}>
+const DetailsTemplate = ({ pageContext, title, created, content }) => (
+  <UserPageTemplate>
     <StyledWrapper>
       <StyledPageHeader>
         <StyledHeading big as="h1">
@@ -44,8 +45,7 @@ const DetailsTemplate = ({ pageType, title, created, content }) => (
         <StyledParagraph>{created}</StyledParagraph>
       </StyledPageHeader>
       <Paragraph>{content}</Paragraph>
-      )}
-      <Button as={Link} to={`/${pageType}`} activecolor={pageType}>
+      <Button as={Link} to={`/${pageContext}`} activecolor={pageContext}>
         save / close
       </Button>
     </StyledWrapper>
@@ -53,7 +53,7 @@ const DetailsTemplate = ({ pageType, title, created, content }) => (
 );
 
 DetailsTemplate.propTypes = {
-  pageType: PropTypes.string.isRequired,
+  pageContext: PropTypes.oneOf(['diaries', 'bakeries', 'fruits']).isRequired,
   title: PropTypes.string,
   created: PropTypes.string,
   content: PropTypes.string,
@@ -65,4 +65,4 @@ DetailsTemplate.defaultProps = {
   content: '',
 };
 
-export default DetailsTemplate;
+export default withContext(DetailsTemplate);

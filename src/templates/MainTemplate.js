@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from 'theme/GlobalStyle';
+import PageContext from 'context';
 import { theme } from 'theme/mainTheme';
 
 class MainTemplate extends Component {
@@ -34,11 +35,14 @@ class MainTemplate extends Component {
 
   render() {
     const { children } = this.props;
+    const { pageType } = this.state;
 
     return (
       <div>
-        <GlobalStyle />
-        <ThemeProvider theme={theme}>{children}</ThemeProvider>
+        <PageContext.Provider value={pageType}>
+          <GlobalStyle />
+          <ThemeProvider theme={theme}>{children}</ThemeProvider>
+        </PageContext.Provider>
       </div>
     );
   }

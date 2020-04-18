@@ -22,17 +22,29 @@ class DetailsPage extends Component {
         this.setState({ pageType: 'fruits' });
         break;
       default:
-        console.log('Something went wrong with matching paths');
+        console.log('Something wrong');
     }
   }
 
   render() {
+
+    const sample = {
+      id: 1,
+      title: 'Sample',
+      content:
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
+      created: '1 day',
+    };
+
     const { pageType } = this.state;
 
     return (
-      <DetailsTemplate pageType={pageType}>
-        <p>{pageType}</p>
-      </DetailsTemplate>
+      <DetailsTemplate
+        pageType={pageType}
+        title={sample.title}
+        created={sample.created}
+        content={sample.content}
+      />
     );
   }
 }

@@ -7,6 +7,7 @@ import Heading from 'components/atoms/Heading/Heading';
 import Button from 'components/atoms/Button/Button';
 import { connect } from 'react-redux';
 import { removeProduct as removeProductAction } from 'actions';
+import withContext from 'hoc/withContext';
  
 const StyledWrapper = styled.div`
   min-height: 380px;
@@ -48,15 +49,15 @@ class Card extends Component {
   handleCardClick = () => this.setState({ redirect: true });
 
   render() {
-    const { id, cardType, title, content, removeProduct } = this.props;
+    const { id, cardType, title, content, removeProduct, pageContext } = this.props;
     const { redirect } = this.state;
  
     if (redirect) {
-      return <Redirect to={`${cardType}/${id}`} />;
+      return <Redirect to={`${pageContext}/details/${id}`} />;
     }
     return (
       <StyledWrapper onClick={this.handleCardClick}>
-        <InnerWrapper activeColor={cardType}>
+      <InnerWrapper activeColor={pageContext}>
           <StyledHeading>{title}</StyledHeading>
         </InnerWrapper>
         <InnerWrapper flex>
@@ -72,7 +73,7 @@ class Card extends Component {
  
 Card.propTypes = {
   id: PropTypes.number.isRequired,
-  cardType: PropTypes.oneOf(['diaries', 'fruits', 'bakeries']),
+  pageContext: PropTypes.oneOf(['diaries', 'fruits', 'bakeries']),
   title: PropTypes.string.isRequired,
   created: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
@@ -81,7 +82,7 @@ Card.propTypes = {
  
 
 Card.defaultProps = {
-  cardType: 'diaries',
+  pageContext: 'diaries',
 };
  
 const mapDispatchToProps = dispatch => ({
@@ -91,4 +92,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   null,
   mapDispatchToProps,
-)(Card);
+)(withContext(Card));
