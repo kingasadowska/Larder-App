@@ -49,7 +49,7 @@ class Card extends Component {
   handleCardClick = () => this.setState({ redirect: true });
 
   render() {
-    const { id, cardType, title, content, removeProduct, pageContext } = this.props;
+    const { id, title, content, removeProduct, pageContext } = this.props;
     const { redirect } = this.state;
  
     if (redirect) {
@@ -62,7 +62,7 @@ class Card extends Component {
         </InnerWrapper>
         <InnerWrapper flex>
           <Paragraph>{content}</Paragraph>
-          <Button onClick={() => removeProduct(cardType, id)} secondary>
+          <Button onClick={() => removeProduct(pageContext, id)} secondary>
             Delete
           </Button>
         </InnerWrapper>

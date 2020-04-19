@@ -5,6 +5,9 @@ import Input from 'components/atoms/Input/Input';
 import Button from 'components/atoms/Button/Button';
 import withContext from 'hoc/withContext';
 import Heading from 'components/atoms/Heading/Heading';
+import { connect } from 'react-redux';
+import { addProduct as addProductAction } from 'actions';
+import { Formik, Form } from 'formik';
 
 const StyledWrapper = styled.div`
   border-left: 10px solid ${({ theme, activecolor }) => theme[activecolor]};
@@ -23,9 +26,14 @@ const StyledWrapper = styled.div`
   transition: transform 0.3s ease-in-out;
 `;
 
+const StyledForm = styled(Form)`
+  display: flex;
+  flex-direction: column;
+`;
+
 const StyledTextArea = styled(Input)`
   font-size: ${({ theme }) => theme.fontSize.m};
-  margin: 60px 0 100px;
+  margin: 60px 0 100px 10px;
   border-radius: 20px;
   height: 30vh;
   
@@ -42,18 +50,46 @@ const StyledInput = styled(Input)`
   }
 `;
 
-const AddProductBar = ({ pageContext, isVisible }) => (
+const AddProductBar = ({ pageContext, isVisible, addProduct, handleClose }) => (
     <StyledWrapper isVisible={isVisible} activecolor={pageContext}>
       <Heading big>Add {pageContext}</Heading>
-      <StyledInput placeholder="Name"/>
-    <StyledTextArea as="textarea" placeholder="Description" />
-    <Button activecolor={pageContext}>Add Note</Button>
+      <Formik
+      initialValues={{ title: '', content: '', created: '' }}
+      onSubmit={values => {
+        addProduct(pageContext, values);
+        handleClose();
+      }}>
+     {({ values, handleChange, handleBlur }) => (
+        <StyledForm>
+          <StyledInput
+            type="text"
+            name="title"
+            placeholder="title"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.title}
+          />
+          <StyledTextArea
+            name="content"
+            as="textarea"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.content}
+          />
+          <Button type="submit" activecolor={pageContext}>
+            Add Product
+          </Button>
+        </StyledForm>
+      )}
+    </Formik>
   </StyledWrapper>
 );
 
 AddProductBar.propTypes = {
     pageContext: PropTypes.oneOf(['diaries', 'fruits', 'bakeries']),
     isVisible: PropTypes.bool,
+    addProduct: PropTypes.func.isRequired,
+    handleClose: PropTypes.func.isRequired
   };
 
   AddProductBar.defaultProps = {
@@ -61,4 +97,11 @@ AddProductBar.propTypes = {
   isVisible: false,
 };
 
-export default withContext(AddProductBar);
+const mapDispatchToProps = dispatch => ({
+  addProduct: (productType, productContent) => dispatch(addProductAction(productType, productContent)),
+});
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(withContext(AddProductBar));

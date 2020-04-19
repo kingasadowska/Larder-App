@@ -53,7 +53,7 @@ class GridTemplate extends Component {
     isAddProductBarVisible: false,
   };
 
-  handleAddProductBarToggle = () => {
+  toggleAddProductBar = () => {
     this.setState(prevState => ({
       isAddProductBarVisible: !prevState.isAddProductBarVisible,
     }));
@@ -75,11 +75,11 @@ class GridTemplate extends Component {
           </StyledPageHeader>
           <StyledGrid>{children}</StyledGrid>
           <StyledButtonIcon
-            onClick={this.handleAddProductBarToggle}
+            onClick={this.toggleAddProductBar}
             icon={addIcon}
             activecolor={pageContext}
           />
-          <AddProductBar isVisible={isAddProductBarVisible} />
+          <AddProductBar handleClose={this.toggleAddProductBar} isVisible={isAddProductBarVisible}  />
         </StyledWrapper>
       </UserPageTemplate>
     );
